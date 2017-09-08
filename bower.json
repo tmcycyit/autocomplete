@@ -1,11 +1,11 @@
 {
-  "name": "YitAutocomplete",
+  "name": "tmcycYitAutocomplete",
   "version": "1.5.1",
-  "homepage": "https://github.com/yerit/yit-autocomplete",
+  "homepage": "https://github.com/tmcycyit/autocomplete",
   "authors": [
     "Yit"
   ],
-  "description": "A modulefork from angucomplete",
+  "description": "tmcycyit A modulefork from angucomplete",
   "keywords": [
     "autocomplete",
     "typeahead",
