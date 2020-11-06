@@ -66,7 +66,7 @@ angular.module('YitAutocomplete', [])
                     }
                     ////////initialization of input//////////////
                     if(angular.isDefined($scope.initUrl)){
-                        $http.get($scope.initUrl).success(function(d){
+                        $http.get($scope.initUrl).then(function(d){
                             if(angular.isDefined(d) && d !== null && d !== "null"){
                                 $scope.searchStr = d[$scope.initTitleField];
                                 if(!angular.isDefined($scope.selectedObject)) {
@@ -74,7 +74,7 @@ angular.module('YitAutocomplete', [])
                                 }
                                 $scope.selectedObject.originalObject = d;
                             }
-                        }).error(function(){
+                        },function(){
                             console.warn("error getting initialization from url: "+$scope.initUrl);
                         });
                     }
@@ -108,7 +108,7 @@ angular.module('YitAutocomplete', [])
                     ///////////////putAddress function////////////////////
                     $scope.putAddress = function(str){
                         var url = $scope.addNewUrl + str;
-                        $http.put(url).success(function(d){
+                        $http.put(url).then(function(d){
                             if(!angular.isDefined($scope.selectedObject) || $scope.selectedObject === null  ) {
                                 $scope.selectedObject = {
                                     originalObject: {}
@@ -202,7 +202,7 @@ angular.module('YitAutocomplete', [])
 
                             } else {
                                 $http.get($scope.url + str, {}).
-                                    success(function(responseData, status, headers, config) {
+                                    then(function(responseData, status, headers, config) {
                                         $scope.searching = false;
                                         if(angular.isDefined(attrs.outArray)){
                                             $scope.outArray = responseData;
@@ -247,8 +247,7 @@ angular.module('YitAutocomplete', [])
                                         $scope.showAddButton = show1 && show2;
                                         ////////////////////////////////
                                         $scope.processResults((($scope.dataField) ? responseData[$scope.dataField] : responseData ), str);
-                                    }).
-                                    error(function(data, status, headers, config) {
+                                    },function(data, status, headers, config) {
                                         console.log("error");
                                     });
                             }
