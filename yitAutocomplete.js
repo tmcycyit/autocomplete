@@ -55,9 +55,9 @@ angular.module('YitAutocomplete', [])
                     $scope.searchStr = null;
                     $scope.showAddButton = false;       //for showing add button
 
-                    if(angular.isFunction($scope.functions)) {
-                        $scope.functions({scope: $scope});
-                    }
+//                     if(angular.isFunction($scope.functions)) {
+//                         $scope.functions({scope: $scope});
+//                     }
                     if(angular.isDefined($scope.grid_hash) && $scope.grid_hash !== ''){
                         $timeout(function(){
                             var at = "return "+$scope.grid_hash+"_submitForm(event, this.form);";
@@ -304,6 +304,9 @@ angular.module('YitAutocomplete', [])
                         $scope.selectedObject = result;
                         $scope.showDropdown = false;
                         $scope.results = [];
+                        if(angular.isFunction($scope.functions)) {
+                            $scope.functions({scope: $scope});
+                        }
                         //$scope.$apply();
                     }
 
