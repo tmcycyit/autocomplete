@@ -68,6 +68,7 @@ angular.module('YitAutocomplete', [])
                     if(angular.isDefined($scope.initUrl)){
                         $http.get($scope.initUrl).then(function(d){
                             if(angular.isDefined(d) && d !== null && d !== "null"){
+                                d = $scope.dataField ? d[$scope.dataField] : d;
                                 $scope.searchStr = d[$scope.initTitleField];
                                 if(!angular.isDefined($scope.selectedObject)) {
                                     $scope.selectedObject = {originalObject: {}};
